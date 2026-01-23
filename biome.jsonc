@@ -36,5 +36,15 @@
 				"useKeyWithClickEvents": "off"
 			}
 		}
-	}
+	},
+	"overrides": [
+		{
+			"includes": ["tsconfig.json"],
+			"json": {
+				"parser": {
+					"allowComments": true
+				}
+			}
+		}
+	]
 }
