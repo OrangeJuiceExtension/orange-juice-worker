@@ -1,9 +1,9 @@
-const titleRegex = /<title>(.*?)<\/title>/i;
+const titleRegex = /<title>(.*?)<\/title>/is;
 
 export const getTitle = (html: string): string | undefined => {
 	const match = titleRegex.exec(html);
 	if (match && match.length >= 1) {
-		return match[1];
+		return match[1].trim();
 	}
 	return undefined;
 };

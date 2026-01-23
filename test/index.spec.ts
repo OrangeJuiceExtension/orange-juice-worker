@@ -21,4 +21,10 @@ describe('Title extraction', () => {
 	it('returns undefined when no title tag present', () => {
 		expect(getTitle('<html><head></head></html>')).toBeUndefined();
 	});
+
+	it('extracts title tag content', () => {
+		expect(getTitle('<title>\nProgrammable Search Engine Blog\n</title>')).toBe(
+			'Programmable Search Engine Blog'
+		);
+	});
 });
