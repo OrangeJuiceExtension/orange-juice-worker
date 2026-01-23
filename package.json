@@ -1,0 +1,20 @@
+{
+	"name": "orange-juice-worker",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"deploy": "wrangler deploy",
+		"dev": "wrangler dev",
+		"start": "wrangler dev",
+		"test": "vitest",
+		"cf-typegen": "wrangler types"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.3.11",
+		"@cloudflare/vitest-pool-workers": "^0.12.4",
+		"typescript": "^5.5.2",
+		"ultracite": "7.0.12",
+		"vitest": "~3.2.0",
+		"wrangler": "^4.60.0"
+	}
+}

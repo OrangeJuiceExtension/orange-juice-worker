@@ -1,0 +1,40 @@
+{
+	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+	"extends": ["ultracite/biome/core"],
+	"formatter": {
+		"enabled": true,
+		"indentStyle": "tab",
+		"indentWidth": 4,
+		"lineWidth": 100
+	},
+	"javascript": {
+		"formatter": {
+			"indentStyle": "tab",
+			"indentWidth": 4,
+			"enabled": true,
+			"quoteStyle": "single"
+		}
+	},
+	"json": {
+		"formatter": {
+			"enabled": true,
+			"indentStyle": "tab",
+			"indentWidth": 4
+		}
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"performance": {
+				"noImgElement": "off"
+			},
+			"style": {
+				"noMagicNumbers": "off"
+			},
+			"a11y": {
+				"noNoninteractiveElementInteractions": "off",
+				"useKeyWithClickEvents": "off"
+			}
+		}
+	}
+}
