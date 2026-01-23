@@ -33,9 +33,15 @@ const getHtmlTitle = async (url: string): Promise<string | undefined> => {
 export default {
 	async fetch(request, _env, _ctx): Promise<Response> {
 		const url = URL.parse(request.url);
-		if (url?.pathname.startsWith('/title')) {
-			const urlParam = url?.searchParams.get('url') ?? '';
-			return Response.json({ title: await getHtmlTitle(urlParam) });
+		try {
+			if (url?.pathname.startsWith('/title')) {
+				const urlParam = url?.searchParams.get('url') ?? '';
+				const res = { title: await getHtmlTitle(urlParam) };
+				console.log(`URL: ${urlParam}, { title: ${res.title} }`);
+				return Response.json(res);
+			}
+		} catch (error) {
+			console.error(`Error fetching title for URL: ${url}`, error);
 		}
 		return new Response('fail');
 	},
