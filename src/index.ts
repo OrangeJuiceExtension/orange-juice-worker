@@ -19,7 +19,7 @@ const getHtmlTitle = async (url: string): Promise<string | undefined> => {
 		return undefined;
 	}
 
-	const response = await fetch(fixedUrl, { cache: 'force-cache' });
+	const response = await fetch(fixedUrl);
 	const html = await response.text();
 	if (!html) {
 		return undefined;
