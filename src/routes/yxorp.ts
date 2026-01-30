@@ -1,6 +1,9 @@
 import { Hono } from 'hono';
+import { cors } from 'hono/cors';
 
 const yxorp = new Hono();
+
+yxorp.use('/*', cors({ origin: 'https://news.ycombinator.com' }));
 
 yxorp.all('/*', (c) => {
 	const url = new URL(c.req.url);
