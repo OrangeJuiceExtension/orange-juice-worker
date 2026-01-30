@@ -23,6 +23,20 @@ GET /title?url=https://example.com
 }
 ```
 
+## GET /yxorp
+
+Proxies requests to the Firebase API so that we can remove a host permission. 
+
+**Example:**
+```
+GET /yxorp/v0/updates.json?print=pretty
+```
+
+**Response:**
+```json
+{"foo":  "bar"}
+```
+
 ### Future Enhancements
 
 AI could be used to generate more descriptive titles when the original title tag is missing or inadequate.
