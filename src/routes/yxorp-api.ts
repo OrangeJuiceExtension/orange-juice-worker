@@ -1,13 +1,12 @@
 import { Hono } from 'hono';
-import { cors } from 'hono/cors';
 
-const yxorp = new Hono();
+const yxorpPrefixRe = /^\/yxorp[^/]*\/?/;
 
-yxorp.use('/*', cors({ origin: 'https://news.ycombinator.com' }));
+const yxorpImg = new Hono();
 
-yxorp.all('/*', (c) => {
+yxorpImg.all('/*', (c) => {
 	const url = new URL(c.req.url);
-	const path = url.pathname.replace('/yxorp', '');
+	const path = url.pathname.replace(yxorpPrefixRe, '/');
 	const hParam = url.searchParams.get('h');
 	url.searchParams.delete('h');
 	const hnUrl = `https://hacker-news.firebaseio.com${path}${url.search || ''}`;
@@ -15,4 +14,4 @@ yxorp.all('/*', (c) => {
 	return fetch(hnUrl);
 });
 
-export default yxorp;
+export default yxorpImg;
