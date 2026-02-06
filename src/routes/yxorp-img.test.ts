@@ -6,7 +6,7 @@ const imageUrl = 'https://example.com/image.png';
 
 describe('yxorp img proxy', () => {
 	it('rejects non-image Accept headers', async () => {
-		const req = new Request(`http://localhost/yxorp-img/?url=${encodeURIComponent(imageUrl)}`, {
+		const req = new Request(`http://localhost/yxorp-img?url=${encodeURIComponent(imageUrl)}`, {
 			headers: { Accept: 'text/html' },
 		});
 
@@ -24,7 +24,7 @@ describe('yxorp img proxy', () => {
 		});
 		vi.stubGlobal('fetch', fetchSpy);
 
-		const req = new Request(`http://localhost/yxorp-img/?url=${encodeURIComponent(imageUrl)}`, {
+		const req = new Request(`http://localhost/yxorp-img?url=${encodeURIComponent(imageUrl)}`, {
 			headers: { Accept: 'image/png' },
 		});
 
@@ -43,7 +43,7 @@ describe('yxorp img proxy', () => {
 		});
 		vi.stubGlobal('fetch', fetchSpy);
 
-		const req = new Request(`http://localhost/yxorp-img/?url=${encodeURIComponent(imageUrl)}`, {
+		const req = new Request(`http://localhost/yxorp-img?url=${encodeURIComponent(imageUrl)}`, {
 			headers: { Accept: 'image/*' },
 		});
 
