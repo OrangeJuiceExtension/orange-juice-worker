@@ -34,6 +34,7 @@ yxorpImg.all('/*', async (c) => {
 		return c.text('Invalid url protocol', 400);
 	}
 
+	console.log({ fetch: targetUrl.toString() });
 	const response = await fetch(targetUrl.toString(), {
 		method,
 		headers: {
