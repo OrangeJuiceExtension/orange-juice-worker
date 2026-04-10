@@ -167,3 +167,4 @@ dist
 .wrangler/
 
 .idea/
+.vscode/

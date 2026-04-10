@@ -1,8 +1,7 @@
 import type { Context } from 'hono';
 import { Hono } from 'hono';
 
-const envProbePathRe =
-	/(^|\/)(\.env(\.[A-Za-z0-9._-]+)?|aws\.env|awsconfig\.js|wp-config\.aws)$/i;
+const envProbePathRe = /(^|\/)(\.env(\.[A-Za-z0-9._-]+)?|aws\.env|awsconfig\.js|wp-config\.aws)$/i;
 
 const envProbe = new Hono();
 
