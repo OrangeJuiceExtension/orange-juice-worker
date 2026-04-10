@@ -27,4 +27,12 @@ describe('Title extraction', () => {
 			'Programmable Search Engine Blog'
 		);
 	});
+
+	it('extracts title tags with attributes', () => {
+		expect(
+			getTitle(
+				'<title data-rh="true">How My Son’s Roblox Mod Helped Me Find a Bug in Crypto Wallet Software</title>'
+			)
+		).toBe('How My Son’s Roblox Mod Helped Me Find a Bug in Crypto Wallet Software');
+	});
 });

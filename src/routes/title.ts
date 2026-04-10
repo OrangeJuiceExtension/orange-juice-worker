@@ -2,7 +2,7 @@ import { Hono } from 'hono';
 
 const title = new Hono();
 
-const titleRegex = /<title>(.*?)<\/title>/is;
+const titleRegex = /<title\b[^>]*>(.*?)<\/title>/is;
 
 export const fetchPageTitle = async (url: string): Promise<string | undefined> => {
 	const fixedUrl: string = url;
@@ -20,7 +20,7 @@ export const fetchPageTitle = async (url: string): Promise<string | undefined> =
 
 export const getTitle = (html: string): string | undefined => {
 	const match = titleRegex.exec(html);
-	if (match && match.length >= 1) {
+	if (match && match.length >= 2) {
 		return match[1].trim();
 	}
 	return undefined;
