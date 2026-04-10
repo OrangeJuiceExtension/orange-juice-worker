@@ -3,6 +3,10 @@ import { Hono } from 'hono';
 const title = new Hono();
 
 const titleRegex = /<title\b[^>]*>(.*?)<\/title>/is;
+const ogTitleRegex =
+	/<meta\b(?=[^>]*\bproperty=["']og:title["'])(?=[^>]*\bcontent=["']([^"']*)["'])[^>]*\/?>/is;
+const h1Regex = /<h1\b[^>]*>(.*?)<\/h1>/is;
+const htmlTagRegex = /<[^>]+>/g;
 
 export const fetchPageTitle = async (url: string): Promise<string | undefined> => {
 	const fixedUrl: string = url;
@@ -18,12 +22,26 @@ export const fetchPageTitle = async (url: string): Promise<string | undefined> =
 	return getTitle(html);
 };
 
-export const getTitle = (html: string): string | undefined => {
-	const match = titleRegex.exec(html);
-	if (match && match.length >= 2) {
-		return match[1].trim();
+const cleanExtractedText = (value: string): string | undefined => {
+	const cleanedValue = value.replace(htmlTagRegex, '').trim();
+	return cleanedValue || undefined;
+};
+
+const getFirstMatch = (html: string, regex: RegExp): string | undefined => {
+	const match = regex.exec(html);
+	if (!match || match.length < 2) {
+		return undefined;
 	}
-	return undefined;
+
+	return cleanExtractedText(match[1]);
+};
+
+export const getTitle = (html: string): string | undefined => {
+	return (
+		getFirstMatch(html, titleRegex) ??
+		getFirstMatch(html, ogTitleRegex) ??
+		getFirstMatch(html, h1Regex)
+	);
 };
 
 title.get('/', async (c) => {
