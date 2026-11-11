@@ -15,7 +15,7 @@ Install dependencies with `bun install --frozen-lockfile`.
 
 `cloudflare.config.ts` is the source configuration; Vite serves assets from `public/`.
 Types are generated automatically on install. The project uses the `cf` CLI open beta
-and its compatible Vite plugin beta; Wrangler is no longer a direct dependency or command.
+and its compatible Vite plugin beta.
 The existing compatibility date is preserved to avoid changing runtime behavior.
 
 CI pins Checkout v7.0.1, Cache v6.1.0, and Setup Bun v2.2.0 to immutable commit SHAs, with frozen

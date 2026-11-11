@@ -158,7 +158,7 @@ dist
 .yarn/install-state.gz
 .pnp.\*
 
-# wrangler project
+# Cloudflare local configuration and generated artifacts
 
 .dev.vars*
 !.dev.vars.example
