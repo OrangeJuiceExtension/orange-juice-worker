@@ -12,7 +12,7 @@ describe('yxorp proxy', () => {
 			.spyOn(globalThis, 'fetch')
 			.mockResolvedValue(new Response('{}', { status: 200 }));
 		const req = new Request('http://localhost/yxorp/v0/item/1');
-		const res = await yxorpApi.request(req, env, createExecutionContext());
+		const res = await yxorpApi.request(req, undefined, env, createExecutionContext());
 
 		expect(res.status).toBe(200);
 		expect(fetchSpy).toHaveBeenCalledWith('https://hacker-news.firebaseio.com/v0/item/1', {
@@ -25,7 +25,7 @@ describe('yxorp proxy', () => {
 			.spyOn(globalThis, 'fetch')
 			.mockResolvedValue(new Response('{}', { status: 200 }));
 		const req = new Request('http://localhost/yxorp/v0/topstories?print=pretty&h=123');
-		const res = await yxorpApi.request(req, env, createExecutionContext());
+		const res = await yxorpApi.request(req, undefined, env, createExecutionContext());
 
 		expect(res.status).toBe(200);
 		expect(fetchSpy).toHaveBeenCalledWith(
