@@ -21,6 +21,20 @@ The existing compatibility date is preserved to avoid changing runtime behavior.
 CI pins Checkout v7.0.1, Cache v6.1.0, and Setup Bun v2.2.0 to immutable commit SHAs, with frozen
 dependency installation, tests, and a production build on GitHub-hosted `ubuntu-latest` runners.
 
+### Cloudflare Builds settings
+
+`cloudflare-builds.json` owns the production and non-production build/deploy commands.
+These settings are not supported in `cloudflare.config.ts` yet. After editing them,
+authenticate with `bunx cf auth login` and run `bun run builds:configure` to apply
+the partial update to Cloudflare. Use `bun run builds:configure --dry-run` to inspect
+the request first. Committing the file alone does not update the remote settings.
+
+Both branches build with `bun run build`. Production deploys the built output;
+non-production only uploads a Worker version, without changing production traffic.
+Repository connections, credentials, branch filters, and preview enablement are
+left unchanged by the update. The account ID is in `cloudflare.config.ts`; the
+`builds:configure` command targets this Worker's immutable script tag.
+
 # Endpoints
 
 ## GET /title

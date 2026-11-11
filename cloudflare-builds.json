@@ -1,0 +1,10 @@
+{
+	"production_settings": {
+		"build_command": "bun run build",
+		"deploy_command": "bunx cf deploy --prebuilt"
+	},
+	"previews_base_config": {
+		"build_command": "bun run build",
+		"deploy_command": "bunx cf workers versions create --prebuilt"
+	}
+}

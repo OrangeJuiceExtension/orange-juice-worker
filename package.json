@@ -9,6 +9,7 @@
     "dev": "cf dev",
     "start": "cf dev",
     "build": "cf build",
+    "builds:configure": "cf builds workers update 03c2e17bd9fb439db9e487e0d7d4df8a --body @cloudflare-builds.json",
     "preview": "bun run build && vite preview",
     "test": "vitest run",
     "cf-typegen": "cf workers types"
