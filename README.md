@@ -6,15 +6,16 @@ A Cloudflare Worker service for talking to 3rd party websites to get around CORS
 
 Install dependencies with `bun install --frozen-lockfile`.
 
-- `bun run dev` (or `bun run start`): run locally through Cloudflare's Vite plugin.
+- `bun run dev` (or `bun run start`): run `cf dev` through Cloudflare's Vite plugin.
 - `bun run test`: run Vitest 5 tests in the Workers runtime through `@cloudflare/vitest-plugin`.
-- `bun run build`: build the Worker and static assets into `dist/`.
+- `bun run build`: run `cf build`, writing the Worker and assets to `.cloudflare/output/`.
 - `bun run preview`: build and preview the production output locally.
-- `bun run deploy`: build, then deploy the generated Worker with Wrangler.
-- `bun run cf-typegen`: regenerate `worker-configuration.d.ts` after binding or Wrangler changes.
+- `bun run deploy`: build and deploy with `cf deploy`.
+- `bun run cf-typegen`: regenerate `.cloudflare/types/index.d.ts` after configuration changes.
 
-The Vite plugin generates `.wrangler/deploy/config.json`, which directs Wrangler to
-the built configuration. Keep `wrangler.jsonc` as the source configuration.
+`cloudflare.config.ts` is the source configuration; Vite serves assets from `public/`.
+Types are generated automatically on install. The project uses the `cf` CLI open beta
+and its compatible Vite plugin beta; Wrangler is no longer a direct dependency or command.
 The existing compatibility date is preserved to avoid changing runtime behavior.
 
 CI pins Checkout v7.0.1, Cache v6.1.0, and Setup Bun v2.2.0 to immutable commit SHAs, with frozen

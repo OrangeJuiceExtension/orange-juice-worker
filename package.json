@@ -1,28 +1,29 @@
 {
-	"name": "orange-juice-worker",
-	"version": "0.0.0",
-	"private": true,
-	"type": "module",
-	"scripts": {
-		"deploy": "bun run build && wrangler deploy",
-		"dev": "vite",
-		"start": "vite",
-		"build": "vite build",
-		"preview": "bun run build && vite preview",
-		"test": "vitest run",
-		"cf-typegen": "wrangler types"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "2.6.6",
-		"@cloudflare/vite-plugin": "^1.68.0",
-		"@cloudflare/vitest-plugin": "^1.7.0",
-		"typescript": "^7.0.2",
-		"ultracite": "8.1.1",
-		"vite": "^8.3.7",
-		"vitest": "5.1.0",
-		"wrangler": "^4.160.0"
-	},
-	"dependencies": {
-		"hono": "^4.13.17"
-	}
+  "name": "orange-juice-worker",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "postinstall": "cf workers types",
+    "deploy": "cf deploy",
+    "dev": "cf dev",
+    "start": "cf dev",
+    "build": "cf build",
+    "preview": "bun run build && vite preview",
+    "test": "vitest run",
+    "cf-typegen": "cf workers types"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.6.6",
+    "@cloudflare/vite-plugin": "2.0.0-beta.v.14",
+    "@cloudflare/vitest-plugin": "^1.7.0",
+    "cf": "^1.0.0-beta.29",
+    "typescript": "^7.0.2",
+    "ultracite": "8.1.1",
+    "vite": "^8.3.7",
+    "vitest": "5.1.0"
+  },
+  "dependencies": {
+    "hono": "^4.13.17"
+  }
 }

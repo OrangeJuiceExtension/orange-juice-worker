@@ -4,6 +4,6 @@
 		"types": ["@cloudflare/vitest-plugin/types"],
 		"strictNullChecks": true
 	},
-	"include": ["./**/*.ts", "../worker-configuration.d.ts"],
+	"include": ["./**/*.ts", "../.cloudflare/types/index.d.ts"],
 	"exclude": []
 }
