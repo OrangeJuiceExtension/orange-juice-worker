@@ -7,7 +7,7 @@ const uuidRe = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
 describe('env probe', () => {
 	it('responds with an API_KEY file for .env probes', async () => {
 		const req = new Request('http://localhost/.env');
-		const res = await envProbe.request(req, env, createExecutionContext());
+		const res = await envProbe.request(req, undefined, env, createExecutionContext());
 		const body = await res.text();
 		const lines = body.trim().split('\n').filter(Boolean);
 
@@ -27,7 +27,7 @@ describe('env probe', () => {
 
 	it('responds for nested .env probes', async () => {
 		const req = new Request('http://localhost/awstats/.env');
-		const res = await envProbe.request(req, env, createExecutionContext());
+		const res = await envProbe.request(req, undefined, env, createExecutionContext());
 		const body = await res.text();
 		const lines = body.trim().split('\n').filter(Boolean);
 
@@ -38,7 +38,7 @@ describe('env probe', () => {
 
 	it('responds for .env.* probes', async () => {
 		const req = new Request('http://localhost/foo/.env.production');
-		const res = await envProbe.request(req, env, createExecutionContext());
+		const res = await envProbe.request(req, undefined, env, createExecutionContext());
 		const body = await res.text();
 		const lines = body.trim().split('\n').filter(Boolean);
 

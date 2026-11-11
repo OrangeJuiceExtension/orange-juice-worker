@@ -37,10 +37,10 @@
 		/* Skip type checking all .d.ts files. */
 		"skipLibCheck": true,
 		"types": [
-			"./worker-configuration.d.ts",
-			"@cloudflare/vitest-pool-workers"
+			"./.cloudflare/types/index.d.ts",
+			"@cloudflare/vitest-plugin/types"
 		]
 	},
 	"exclude": ["test"],
-	"include": ["worker-configuration.d.ts", "src/**/*.ts"]
+	"include": [".cloudflare/types/index.d.ts", "src/**/*.ts"]
 }
