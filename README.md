@@ -19,8 +19,7 @@ and its compatible Vite plugin beta.
 The existing compatibility date is preserved to avoid changing runtime behavior.
 
 CI pins Checkout v7.0.1, Cache v6.1.0, and Setup Bun v2.2.0 to immutable commit SHAs, with frozen
-dependency installation, tests, and a production build. The Tenki runner must
-provide Actions Runner 2.327.1 or newer for the Node.js 24 actions.
+dependency installation, tests, and a production build on GitHub-hosted `ubuntu-latest` runners.
 
 # Endpoints
 
